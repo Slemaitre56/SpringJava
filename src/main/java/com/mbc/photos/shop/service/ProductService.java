@@ -1,8 +1,11 @@
 package com.mbc.photos.shop.service;
 import com.mbc.photos.shop.dao.ProductDao;
 import com.mbc.photos.shop.domain.Product;
+import org.springframework.stereotype.Service;
+
 import java.util.*;
 
+@Service
 public class ProductService {
 
     private ProductDao productDao;

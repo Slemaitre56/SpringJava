@@ -1,12 +1,15 @@
 package com.mbc.photos.shop;
 import com.mbc.photos.shop.cli.CliController;
-import com.mbc.photos.shop.dao.ProductDao;
-import com.mbc.photos.shop.dao.ProductDaoInMemory;
 import com.mbc.photos.shop.service.ProductService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
+
+        SpringApplication.run(Main.class, args);
 
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         ProductService productService = applicationContext.getBean(ProductService.class);
@@ -14,14 +17,6 @@ public class Main {
         CliController cliController = applicationContext.getBean(CliController.class);
         cliController.start();
 
-
-        /*
-        ProductDao productDao = new ProductDaoInMemory();
-        ProductService productService = new ProductService(productDao);
-        CliController cliController = new CliController(productService);
-        initData(productService);
-        cliController.start();
-        */
     }
 
     private static void initData(ProductService productService) {

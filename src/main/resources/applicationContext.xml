@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="productDao" class="com.mbc.photos.shop.dao.ProductDaoInMemory"></bean>
-    <bean id="productService" class="com.mbc.photos.shop.service.ProductService">
-        <constructor-arg name="productDao" ref="productDao"></constructor-arg>
-    </bean>
-    <bean id="cliController" class="com.mbc.photos.shop.cli.CliController">
-        <constructor-arg name="productService" ref="productService"></constructor-arg>
-    </bean>
+    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="com.mbc.photos.shop.cli"></context:component-scan>
+    <context:component-scan base-package="com.mbc.photos.shop.service"></context:component-scan>
+    <context:component-scan base-package="com.mbc.photos.shop.dao"></context:component-scan>
+
 
 </beans>

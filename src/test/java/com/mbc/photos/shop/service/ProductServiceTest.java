@@ -6,10 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
@@ -46,6 +43,7 @@ public class ProductServiceTest {
         List<Product> actualProducts = productService.searchByProductName("Photo");
         assertThat(actualProducts, equalTo(expectedProducts));
     }
+
 
     @Test
     public void searchByProductName_noResult() {

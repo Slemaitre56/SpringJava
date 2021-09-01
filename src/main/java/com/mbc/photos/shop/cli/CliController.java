@@ -1,8 +1,11 @@
 package com.mbc.photos.shop.cli;
 import com.mbc.photos.shop.domain.Product;
 import com.mbc.photos.shop.service.ProductService;
+import org.springframework.stereotype.Controller;
+
 import java.util.*;
 
+@Controller
 public class CliController {
 
     private ProductService productService;
