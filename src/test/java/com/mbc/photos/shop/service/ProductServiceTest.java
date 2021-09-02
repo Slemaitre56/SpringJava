@@ -2,14 +2,14 @@ package com.mbc.photos.shop.service;
 
 import com.mbc.photos.shop.dao.ProductDao;
 import com.mbc.photos.shop.domain.Product;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
 import java.util.*;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 
@@ -31,7 +31,7 @@ public class ProductServiceTest {
                     "image de Serpent")
     );
 
-    @Before
+    @BeforeEach
     public void setup() {
         mockDao = mock(ProductDao.class);
         productService = new ProductService(mockDao);
@@ -41,7 +41,7 @@ public class ProductServiceTest {
     public void searchByProductName() {
         when(mockDao.searchByProductName("Photo")).thenReturn(expectedProducts);
         List<Product> actualProducts = productService.searchByProductName("Photo");
-        assertThat(actualProducts, equalTo(expectedProducts));
+        assertEquals(actualProducts, equalTo(expectedProducts));
     }
 
 
@@ -49,21 +49,21 @@ public class ProductServiceTest {
     public void searchByProductName_noResult() {
         when(mockDao.searchByProductName("Image")).thenReturn(new ArrayList<>());
         List<Product> actualProducts = productService.searchByProductName("Image");
-        assertThat(actualProducts.size(), equalTo(0));
+        assertEquals(actualProducts.size(), equalTo(0));
     }
 
     @Test
     public void searchByProductPrice() {
         when(mockDao.searchByProductPrice(19.99)).thenReturn(expectedProducts);
         List<Product> actualProducts = productService.searchByProductPrice(19.99);
-        assertThat(actualProducts, equalTo(expectedProducts));
+        assertEquals(actualProducts, equalTo(expectedProducts));
     }
 
     @Test
     public void searchByProductPrice_noResult() {
         when(mockDao.searchByProductPrice(00.00)).thenReturn(expectedProducts);
         List<Product> actualProducts = productService.searchByProductPrice(00.00);
-        assertThat(actualProducts, equalTo(expectedProducts));
+        assertEquals(actualProducts, equalTo(expectedProducts));
     }
 
     @Test
@@ -78,8 +78,8 @@ public class ProductServiceTest {
         ArgumentCaptor<Product> productArgumentCaptor = ArgumentCaptor.forClass(Product.class);
         verify(mockDao).add(productArgumentCaptor.capture());
         Product productSentToDao = productArgumentCaptor.getValue();
-        assertThat(productSentToDao.getProductId(), is(notNullValue()));
-        assertThat(productSentToDao.getProductName(), is("Toto"));
+        assertEquals(productSentToDao.getProductId(), is(notNullValue()));
+        assertEquals(productSentToDao.getProductName(), is("Toto"));
     }
 
 

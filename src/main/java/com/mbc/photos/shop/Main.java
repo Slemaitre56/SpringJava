@@ -1,21 +1,18 @@
 package com.mbc.photos.shop;
-import com.mbc.photos.shop.cli.CliController;
 import com.mbc.photos.shop.service.ProductService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.ApplicationContext;
+
+
 
 @SpringBootApplication
 public class Main {
+
     public static void main(String[] args) {
-
-        SpringApplication.run(Main.class, args);
-
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext applicationContext = SpringApplication.run(Main.class, args);
         ProductService productService = applicationContext.getBean(ProductService.class);
         initData(productService);
-        CliController cliController = applicationContext.getBean(CliController.class);
-        cliController.start();
 
     }
 
