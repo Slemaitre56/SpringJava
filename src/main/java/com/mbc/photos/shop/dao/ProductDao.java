@@ -7,18 +7,22 @@ import java.util.*;
 
 public interface ProductDao {
 
+    //POST
+    void save(Product product);
+
+    //GET
     List<Product> findAll();
 
-    List<Product> searchByProductName(String productName);
+    List<Product> findAllByProductName(String productName);
 
-    List<Product> searchByProductPrice(Double productPrice);
+    List<Product> findAllByProductPrice(Double productPrice);
 
-    void add(Product product);
+    Optional<Product> findByProductId(UUID productId);
 
-    Optional<Product> findById(UUID productId);
-
-    void delete(UUID productId);
-
+    //PUT
     void update(Product product);
+
+    //DELETE
+    void deleteByProductId(UUID productId);
 
 }

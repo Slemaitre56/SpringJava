@@ -1,58 +1,29 @@
 package com.mbc.photos.shop.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.UUID;
+
+@Entity(name= "user")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class User {
 
-    private int userId;
+    @Id
+    @Column(length = 36)
+    @Type(type="uuid-char")
+    private UUID userId;
     private String userName;
     private String userPassword;
     private String userHat;
 
-    public User(int userId, String userName, String userPassword, String userHat) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userPassword = userPassword;
-        this.userHat = userHat;
-    }
 
-    public int getUserId() {
-        return userId;
-    }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public String getUserHat() {
-        return userHat;
-    }
-
-    public void setUserHat(String userHat) {
-        this.userHat = userHat;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", userHat='" + userHat + '\'' +
-                '}';
-    }
 }

@@ -38,37 +38,37 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void searchByProductName() {
-        when(mockDao.searchByProductName("Photo")).thenReturn(expectedProducts);
-        List<Product> actualProducts = productService.searchByProductName("Photo");
+    public void findAllByProductName() {
+        when(mockDao.findAllByProductName("Photo")).thenReturn(expectedProducts);
+        List<Product> actualProducts = productService.findAllByProductName("Photo");
         assertEquals(actualProducts, equalTo(expectedProducts));
     }
 
 
     @Test
     public void searchByProductName_noResult() {
-        when(mockDao.searchByProductName("Image")).thenReturn(new ArrayList<>());
-        List<Product> actualProducts = productService.searchByProductName("Image");
+        when(mockDao.findAllByProductName("Image")).thenReturn(new ArrayList<>());
+        List<Product> actualProducts = productService.findAllByProductName("Image");
         assertEquals(actualProducts.size(), equalTo(0));
     }
 
     @Test
-    public void searchByProductPrice() {
-        when(mockDao.searchByProductPrice(19.99)).thenReturn(expectedProducts);
-        List<Product> actualProducts = productService.searchByProductPrice(19.99);
+    public void findAllByProductPrice() {
+        when(mockDao.findAllByProductPrice(19.99)).thenReturn(expectedProducts);
+        List<Product> actualProducts = productService.findAllByProductPrice(19.99);
         assertEquals(actualProducts, equalTo(expectedProducts));
     }
 
     @Test
     public void searchByProductPrice_noResult() {
-        when(mockDao.searchByProductPrice(00.00)).thenReturn(expectedProducts);
-        List<Product> actualProducts = productService.searchByProductPrice(00.00);
+        when(mockDao.findAllByProductPrice(00.00)).thenReturn(expectedProducts);
+        List<Product> actualProducts = productService.findAllByProductPrice(00.00);
         assertEquals(actualProducts, equalTo(expectedProducts));
     }
 
     @Test
     public void add() {
-        productService.add(
+        productService.save(
                 "Photo de Chat",
                 17.99,
                 "Photo de Chat",
@@ -76,7 +76,7 @@ public class ProductServiceTest {
                 "image de Chat");
 
         ArgumentCaptor<Product> productArgumentCaptor = ArgumentCaptor.forClass(Product.class);
-        verify(mockDao).add(productArgumentCaptor.capture());
+        verify(mockDao).save(productArgumentCaptor.capture());
         Product productSentToDao = productArgumentCaptor.getValue();
         assertEquals(productSentToDao.getProductId(), is(notNullValue()));
         assertEquals(productSentToDao.getProductName(), is("Toto"));

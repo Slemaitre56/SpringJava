@@ -1,8 +1,10 @@
 package com.mbc.photos.shop.domain;
 
+import java.util.UUID;
+
 public class Customer extends User {
 
-    public Customer(int id, String name, String password, String hat) {
+    public Customer(UUID id, String name, String password, String hat) {
         super(id, name, password, hat);
     }
 
