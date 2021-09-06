@@ -16,6 +16,7 @@ public class ProductDaoInBdd implements ProductDao {
 
     private final ProductRepository productRepository;
 
+
     //POST
     @Override
     public void save(Product product) {
@@ -46,8 +47,7 @@ public class ProductDaoInBdd implements ProductDao {
 
     //PUT
     @Override
-    public void update(Product product) {
-
+    public void update(Product product) { productRepository.save(product);
     }
 
 

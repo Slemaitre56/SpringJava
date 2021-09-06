@@ -11,6 +11,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
+
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
@@ -28,12 +29,12 @@ public class ProductController {
                 product.getProductDescription(),
                 product.getProductQuantity(),
                 product.getProductPicture());
-    };
+    }
 
 
     //GET
     @GetMapping("")
-    public List<Product> findAll() { return productService.findAll();};
+    public List<Product> findAll() { return productService.findAll();}
 
     @GetMapping("/name/{productName}")
     public List<Product> findAllByProductName(@PathVariable String productName) {
@@ -61,5 +62,5 @@ public class ProductController {
     @DeleteMapping("/{productId}")
     void delete(@PathVariable UUID productId) {
         productService.delete(productId);
-    };
+    }
 }
